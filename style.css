@@ -29,14 +29,14 @@ html::-webkit-scrollbar {
   width: 1rem;
 }
 html::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: #ccc;
 }
 html::-webkit-scrollbar-thumb {
   background: var(--blue);
 }
 body {
   background: var(--bg-color);
-  padding-left: 30rem;
+  padding-left: 29rem;
 }
 header {
   position: fixed;
@@ -125,22 +125,18 @@ header .share a:hover {
   box-shadow: var(--box-shadow-inset);
   color: var(--blue);
 }
+
 .home {
   display: flex;
   justify-content: center;
   padding: 0 19rem;
   flex-flow: column;
+  text-align: center;
 }
 .home h3 {
   font-size: 3.5rem;
   color: var(--black);
   text-transform: uppercase;
-}
-
-.home p {
-  font-size: 2rem;
-  color: var(--black);
-  padding-bottom: 0.8rem;
 }
 section {
   min-height: 100vh;
@@ -153,11 +149,53 @@ section {
 .home h1 span {
   color: var(--blue);
 }
-.btn {
+.home .toggle .option {
+  height: 90px;
+  overflow: hidden;
+  font-size: 4.5rem;
+}
+.home .toggle .option li {
+  list-style: none;
+  color: var(--black);
+  font-weight: 650;
+  position: relative;
+  top: 0;
+  animation: slide 12s steps(4) infinite;
+}
+@keyframes slide {
+  100% {
+    top: -360px;
+  }
+}
+.home .toggle .option li span {
+  position: relative;
+  line-height: 90px;
+}
+.home .toggle .option li span::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  height: 8rem;
+  background: var(--bg-color);
+  border-left: 2px solid var(--black);
+  animation: typing 3s steps(10) infinite;
+}
+@keyframes typing {
+  40%,
+  60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
+.home .btn {
   padding: 0.7rem 3rem;
   border-radius: 5rem;
   font-size: 2rem;
   font-weight: 650;
+  background: var(--bg-color);
   box-shadow: var(--box-shadow);
   color: var(--black);
 }
@@ -174,6 +212,7 @@ section {
 .heading span {
   color: var(--blue);
 }
+
 .about .row {
   display: flex;
   align-items: center;
@@ -321,13 +360,18 @@ section {
   #menu {
     display: block;
   }
+  .home .toggle .option li span::after {
+    height: 9rem;
+  }
 
   header.toggle {
     left: 0%;
   }
-
   body {
     padding: 0;
+  }
+  .home {
+    padding-right: 9rem;
   }
 }
 
@@ -335,15 +379,32 @@ section {
   html {
     font-size: 50%;
   }
+  .userinfo {
+    padding-top: 2rem;
+  }
+  .home {
+    font-size: 1rem;
+  }
+  .home .toggle .option li span::after {
+    height: 9rem;
+  }
 }
 
 @media (max-width: 400px) {
+  body {
+    left: 0;
+  }
   header {
     width: 100%;
   }
-
+  .userinfo {
+    padding-top: 2rem;
+  }
   .heading {
     margin: 0 3rem;
+  }
+  .option {
+    font-size: 4rem;
   }
 
   .about .row .counter .box {
